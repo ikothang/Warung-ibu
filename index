@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Ibu - Menu Digital Interaktif</title>
+    <!-- Tailwind CSS CDN untuk utiliti asas yang pantas -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans untuk kontras tipografi mewah -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons untuk ikon moden -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fdfbf7',
+                            100: '#fbf4e6',
+                            200: '#f5e4c4',
+                            300: '#ebd097',
+                            400: '#dfb768',
+                            500: '#d49b3f',
+                            600: '#b87c2f',
+                            700: '#995f26',
+                            800: '#7c4c21',
+                            900: '#663e1e',
+                        },
+                        navy: {
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+<style>
+        /* Corak Latar Belakang Batik Klasik Menggunakan CSS Gradients */
+        .batik-bg {
+            background-color: #020617; /* Navy 950 */
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(212, 155, 63, 0.15) 1px, transparent 20px),
+                radial-gradient(circle at 0 0, rgba(212, 155, 63, 0.1) 2px, transparent 40px),
+                linear-gradient(45deg, rgba(212, 155, 63, 0.03) 25%, transparent 25%, transparent 75%, rgba(212, 155, 63, 0.03) 75%, rgba(212, 155, 63, 0.03)),
+                linear-gradient(45deg, rgba(212, 155, 63, 0.03) 25%, #020617 25%, #020617 75%, rgba(212, 155, 63, 0.03) 75%, rgba(212, 155, 63, 0.03));
+            background-size: 40px 40px, 40px 40px, 80px 80px, 80px 80px;
+            background-position: 0 0, 20px 20px, 0 0, 40px 40px;
+        }
+
+/* Hiasan Sempadan Corak Batik */
+        .batik-border-gold {
+            border-image: repeating-linear-gradient(45deg, #d49b3f, #d49b3f 10px, #995f26 10px, #995f26 20px) 20;
+        }
+
+/* Efek Shimmer untuk Butang Utama (Tarik Perhatian untuk Menjual!) */
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .animate-shimmer::after {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 20%,
+                rgba(255, 255, 255, 0.6) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shimmer 2.5s infinite;
+            content: '';
+        }
+
+/* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d49b3f;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 bg-navy-950 min-h-screen selection:bg-gold-500 selection:text-navy-950">
+
+<!-- ================= WELCOME PAGE (HERO) ================= -->
+    <div id="welcome-page" class="relative min-h-screen flex flex-col justify-between items-center px-4 py-8 batik-bg transition-all duration-1000 z-50 overflow-hidden">
+
+<!-- Frame Batik Atas -->
+        <div class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-gold-700 via-gold-400 to-gold-700 opacity-90 z-20"></div>
+        <div class="absolute top-4 left-0 right-0 flex justify-center opacity-30 pointer-events-none">
+            <span class="text-xs tracking-[0.5em] text-gold-300 font-serif">♦ WARUNG IBU ♦ WARUNG IBU ♦ WARUNG IBU ♦</span>
+        </div>
+
+<!-- Decorative Mandala Center -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+<!-- Header Logo Area -->
+        <div class="text-center mt-12 z-10 animate-fade-in">
+            <div class="inline-block p-1 rounded-full bg-gradient-to-br from-gold-300 to-gold-700 mb-4 shadow-xl">
+                <div class="bg-navy-950 px-6 py-4 rounded-full border border-gold-500/30">
+                    <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-100 to-gold-400">
+                        WARUNG IBU
+                    </h1>
+                </div>
+            </div>
+            <p class="text-gold-400 font-serif italic text-lg md:text-xl tracking-wide mt-2">
+                "Air tangan ibu sentiasa terbaik."
+            </p>
+        </div>
+
+<!-- Hero Content & Copywriting (Membina Lapar & Emosi) -->
+        <div class="max-w-md w-full text-center my-auto px-4 z-10">
+            <!-- Badges Keistimewaan -->
+            <div class="flex justify-center gap-2 mb-6 text-xs text-gold-200">
+                <span class="bg-gold-950/80 border border-gold-500/40 px-3 py-1 rounded-full flex items-center gap-1">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-gold-400"></i> Resipi Warisan
+                </span>
+                <span class="bg-gold-950/80 border border-gold-500/40 px-3 py-1 rounded-full flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-gold-400"></i> 100% Halal & Bersih
+                </span>
+            </div>
+
+<h2 class="text-2xl md:text-3xl font-serif font-bold text-white mb-4 leading-relaxed">
+                Rindu Masakan Ibu di Kampung?
+            </h2>
+            <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
+                Setiap hidangan dimasak dengan penuh kasih sayang, menggunakan rempah ratus terpilih dan bahan segar harian. Nikmati keenakan asli yang membangkitkan memori indah rumah.
+            </p>
+
+<!-- Ruang Isi No Meja Sebelum Order -->
+            <div class="bg-navy-900/90 border border-gold-500/30 rounded-2xl p-4 mb-6 text-left shadow-lg">
+                <label for="welcome-table-no" class="block text-xs font-bold text-gold-400 uppercase tracking-widest mb-2 text-center flex items-center justify-center gap-1.5">
+                    <i data-lucide="hash" class="w-3.5 h-3.5 text-gold-400"></i> Sila Masukkan Nombor Meja Anda:
+                </label>
+                <input type="text" id="welcome-table-no" placeholder="Contoh: Meja 12" class="w-full bg-navy-950 border border-gold-500/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-400 text-white text-center font-bold placeholder-gray-600 transition-all">
+                <!-- Mesej Amaran Ralat -->
+                <p id="table-error" class="text-xs text-red-500 text-center font-medium mt-2 hidden">Sila masukkan nombor meja anda sebelum melihat menu!</p>
+            </div>
+
+<!-- CTA Button - Shimmering & High Contrast -->
+            <button onclick="bukaMenu()" class="animate-shimmer w-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-700 hover:from-gold-500 hover:to-gold-600 text-navy-950 font-bold text-lg py-4 px-8 rounded-xl shadow-[0_10px_25px_rgba(212,155,63,0.3)] hover:shadow-[0_15px_30px_rgba(212,155,63,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                Lihat Menu & Tempah Sekarang
+                <i data-lucide="arrow-right" class="w-5 h-5 stroke-[2.5]"></i>
+            </button>
+
+<!-- Social Proof / Urgency -->
+            <p class="text-xs text-gold-400/80 mt-4 flex items-center justify-center gap-1.5">
+                <i data-lucide="flame" class="w-3.5 h-3.5 text-red-500 animate-pulse"></i> 142 orang sedang menempah hari ini
+            </p>
+        </div>
+
+<!-- Footer / Lokasi -->
+        <div class="text-center text-xs text-gray-500 z-10 pb-4">
+            <p class="flex items-center justify-center gap-1 text-gold-300/60 mb-1">
+                <i data-lucide="map-pin" class="w-3 h-3 text-gold-500"></i> Kampung Melayu, Jitra, Kedah
+            </p>
+            <p>© 2026 Warung Ibu. Hak Cipta Terpelihara.</p>
+        </div>
+
+<!-- Frame Batik Bawah -->
+        <div class="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-gold-700 via-gold-400 to-gold-700 opacity-90 z-20"></div>
+    </div>
+
+<!-- ================= MAIN MENU PAGE ================= -->
+    <div id="menu-page" class="hidden min-h-screen batik-bg flex flex-col pb-24">
+
+<!-- Header Lekat (Sticky Header) -->
+        <header class="sticky top-0 bg-navy-950/95 backdrop-blur-md border-b border-gold-500/20 z-40 transition-all duration-300">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Mini Logo -->
+                <div class="cursor-pointer" onclick="kembaliKeWelcome()">
+                    <span class="font-serif text-lg md:text-xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-500">
+                        WARUNG IBU
+                    </span>
+                    <p class="text-[10px] text-gold-400/80 font-serif italic -mt-1">Air tangan ibu sentiasa terbaik</p>
+                </div>
+
+<!-- Navigation Tabs (Semua, Makanan, Minuman) -->
+                <div class="flex bg-navy-900 border border-gold-500/20 rounded-full p-1 text-xs md:text-sm">
+                    <button onclick="tapisMenu('semua')" id="tab-semua" class="px-4 py-1.5 rounded-full font-medium transition-all duration-200 bg-gold-500 text-navy-950">
+                        Semua
+                    </button>
+                    <button onclick="tapisMenu('makanan')" id="tab-makanan" class="px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-gray-400 hover:text-gold-400">
+                        Makanan
+                    </button>
+                    <button onclick="tapisMenu('minuman')" id="tab-minuman" class="px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-gray-400 hover:text-gold-400">
+                        Minuman
+                    </button>
+                </div>
+
+<!-- Butang Troli Mini -->
+                <button onclick="bukaModalTroli()" class="relative p-2.5 bg-gold-950/80 hover:bg-gold-900/80 border border-gold-500/30 rounded-xl transition-all duration-200 group">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 text-gold-400 group-hover:scale-110 transition-transform"></i>
+                    <span id="troli-count" class="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-bounce shadow-md">
+                        0
+                    </span>
+                </button>
+            </div>
+        </header>
+
+<!-- Paparan Status Meja Aktif (Meningkatkan Keyakinan Pelanggan) -->
+        <div class="max-w-6xl mx-auto px-4 mt-6 w-full">
+            <div class="bg-gradient-to-r from-gold-950 via-navy-900 to-gold-950 border border-gold-500/30 rounded-xl p-3 flex justify-between items-center text-xs md:text-sm">
+                <span class="text-gray-400 flex items-center gap-1.5">
+                    <i data-lucide="user-check" class="w-4 h-4 text-gold-400"></i> Memesan untuk:
+                </span>
+                <span id="active-table-badge" class="bg-gold-500 text-navy-950 font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    Meja -
+                </span>
+            </div>
+        </div>
+
+<!-- Menu Grid Container -->
+        <main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
+            <!-- Grid Makanan & Minuman -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Menu items akan dimuatkan secara dinamik menggunakan JavaScript -->
+            </div>
+        </main>
+
+<!-- Floating Cart Bar (Akan muncul apabila ada barang dalam troli) -->
+        <div id="floating-cart" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-gradient-to-r from-gold-900 via-gold-800 to-gold-900 border border-gold-400/40 rounded-2xl p-4 flex justify-between items-center shadow-[0_15px_40px_rgba(0,0,0,0.5)] z-40 transform translate-y-32 opacity-0 transition-all duration-500">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-navy-950 rounded-lg text-gold-400">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p id="floating-cart-text" class="text-sm font-semibold text-white">0 Hidangan Ditambah</p>
+                    <p id="floating-cart-price" class="text-xs text-gold-200">Jumlah: RM 0.00</p>
+                </div>
+            </div>
+            <button onclick="bukaModalTroli()" class="bg-white hover:bg-gold-100 text-navy-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-all duration-200 shadow-md flex items-center gap-1.5">
+                Selesai Pesanan
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+<!-- ================= MODAL TROLI & CHECKOUT ================= -->
+    <div id="cart-modal" class="fixed inset-0 bg-navy-950/80 backdrop-blur-sm z-50 flex justify-end transition-opacity duration-300 opacity-0 pointer-events-none">
+
+<!-- Modal Content Pane -->
+        <div id="cart-pane" class="w-full max-w-md bg-navy-900 border-l border-gold-500/20 h-full flex flex-col justify-between shadow-2xl transform translate-x-full transition-transform duration-300">
+
+<!-- Header Modal -->
+            <div class="p-4 border-b border-gold-500/20 flex justify-between items-center bg-navy-950">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="shopping-cart" class="text-gold-400 w-5 h-5"></i>
+                    <h3 class="font-serif text-lg font-bold text-white">Troli Pesanan Anda</h3>
+                </div>
+                <button onclick="tutupModalTroli()" class="p-1.5 hover:bg-gold-950/50 rounded-lg text-gray-400 hover:text-gold-400 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+<!-- Senarai Item Troli -->
+            <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-4">
+                <!-- Dinamik dimasukkan di sini. Jika kosong, tunjuk keadaan kosong -->
+                <div class="text-center py-12 text-gray-500">
+                    <i data-lucide="shopping-bag" class="w-16 h-16 mx-auto mb-3 opacity-30 text-gold-400"></i>
+                    <p class="font-serif text-lg text-gold-300/80">Troli anda masih kosong.</p>
+                    <p class="text-xs mt-1">Pilih hidangan kegemaran anda untuk meneruskan pesanan.</p>
+                </div>
+            </div>
+
+<!-- Bahagian Pengiraan & Borang Pembeli -->
+            <div class="p-4 border-t border-gold-500/20 bg-navy-950 space-y-4">
+                <!-- Ringkasan Harga -->
+                <div class="space-y-2 text-sm text-gray-300">
+                    <div class="flex justify-between">
+                        <span>Subjumlah:</span>
+                        <span id="summary-subtotal" class="font-semibold text-white">RM 0.00</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-white pt-2 border-t border-gray-800">
+                        <span class="text-gold-400">Jumlah Keseluruhan:</span>
+                        <span id="summary-total" class="text-gold-300">RM 0.00</span>
+                    </div>
+                </div>
+
+<!-- Borang Tempahan (Sangat Penting untuk Pengumpulan Data Pelanggan & WhatsApp Checkout!) -->
+                <div class="space-y-3 pt-2">
+                    <h4 class="text-xs font-bold text-gold-400 uppercase tracking-wider">Maklumat Penghantaran / Ambil</h4>
+
+<div>
+                        <input type="text" id="customer-name" placeholder="Nama Penuh Anda *" class="w-full bg-navy-900 border border-gold-500/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-gold-500 text-white" required>
+                    </div>
+
+<div class="grid grid-cols-2 gap-2">
+                        <select id="order-type" onchange="tukarJenisPesanan()" class="bg-navy-900 border border-gold-500/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-gold-500 text-white">
+                            <option value="Dine-in">Makan Sini (Dine-in)</option>
+                            <option value="Takeaway">Bungkus (Takeaway)</option>
+                            <option value="Delivery">Penghantaran (Delivery)</option>
+                        </select>
+                        <input type="text" id="table-or-address" placeholder="No Meja *" class="bg-navy-900 border border-gold-500/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-gold-500 text-white" required readonly>
+                    </div>
+
+<textarea id="order-note" placeholder="Nota tambahan (cth: kurang manis, nak pedas...)" rows="2" class="w-full bg-navy-900 border border-gold-500/30 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-gold-500 text-white"></textarea>
+                </div>
+
+<!-- Amaran ralat borang secara tersuai -->
+                <p id="checkout-error" class="text-xs text-red-500 text-center font-semibold hidden"></p>
+
+<!-- Butang Submit / Hantar ke WhatsApp -->
+                <button id="btn-submit-order" onclick="hantarPesananWhatsApp()" class="animate-shimmer w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-600 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <span id="btn-submit-text" class="flex items-center gap-2">
+                        <i class="w-5 h-5 fill-white stroke-none" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.419 5.422.001 12.08.001c3.225.001 6.258 1.257 8.541 3.543 2.282 2.287 3.537 5.32 3.536 8.542-.002 6.662-5.422 12.08-12.08 12.08-2.002-.002-3.973-.499-5.736-1.442L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.564 0 10.093-4.527 10.095-10.09C21.648 4.78 17.13 2.25 12.084 2.25c-5.56 0-10.09 4.526-10.092 10.09-.001 1.815.496 3.42 1.433 4.98L2.43 21.73l4.217-1.106-.001-.001z"/></svg>'); background-repeat: no-repeat; width: 1.25rem; height: 1.25rem;"></i>
+                        Hantar Pesanan & WhatsApp
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+<!-- ================= DATA, JAVASCRIPT & INTEGRASI FIREBASE ================= -->
+    <script type="module">
+        // Import Firebase SDK Modules (Mengekalkan kestabilan & piawaian moden)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Konfigurasi Firebase Dinamik dengan keutamaan pemboleh ubah persekitaran (Menyelesaikan pepijat ralat padanan konfigurasi token)
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : {
+                apiKey: "AIzaSyDyrX1WmJ67x3w5PDAW6v2yJazT49ZQa7g",
+                authDomain: "restoran-dd4bd.firebaseapp.com",
+                projectId: "restoran-dd4bd",
+                storageBucket: "restoran-dd4bd.firebasestorage.app",
+                messagingSenderId: "44849081363",
+                appId: "1:44849081363:web:1a56f2ebc972f5227be3e6",
+                measurementId: "G-GME7877LYX"
+            };
+
+        // Inisialisasi Firebase & Firestore
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        // Dapatkan appId secara selamat atau guna laluan default restoran
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'restoran-dd4bd';
+        
+        let currentUser = null;
+
+        // Menguruskan Authentication (Sesuai dengan RULE 3 & menambah kestabilan ralat konfigurasi)
+        const initAuth = async () => {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    try {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } catch (tokenError) {
+                        console.warn("Custom token failed, falling back to anonymous authentication.", tokenError);
+                        await signInAnonymously(auth);
+                    }
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (e) {
+                console.error("Firebase Authentication Error:", e);
+            }
+        };
+
+        initAuth();
+
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+        });
+
+        // Data Menu Tempatan (10 Pilihan Makanan & 10 Pilihan Minuman)
+        const MENU_DATA = [
+            // --- MAKANAN (1 hingga 10) ---
+            {
+                id: 'm1',
+                nama: 'Nasi Lemak Ayam Berempah Ibu',
+                kategori: 'makanan',
+                harga: 12.50,
+                laris: true,
+                penerangan: 'Resipi asli sambal tumis 8 jam dengan ayam goreng berempah rangup, nasi harum daun pandan & santan segar.',
+                imej: 'https://images.unsplash.com/photo-1632203171982-cc0df6e9ceb4?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Nasi Lemak Ayam Berempah'
+            },
+            {
+                id: 'm2',
+                nama: 'Laksa Utara Warisan',
+                kategori: 'makanan',
+                harga: 8.50,
+                laris: true,
+                penerangan: 'Kuah pekat ikan kembung segar diadun bersama daun kesum, bunga kantan asli, disajikan dengan ulaman segar kampung.',
+                imej: 'https://images.unsplash.com/photo-1626804475315-7634f195d85c?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Laksa Utara'
+            },
+            {
+                id: 'm3',
+                nama: 'Mee Rebus Tulang Temasek',
+                kategori: 'makanan',
+                harga: 14.00,
+                laris: false,
+                penerangan: 'Kuah keledek manis yang pekat memikat, dipadankan bersama mi kuning, telur rebus, tauhu goreng dan tulang lembu lembut.',
+                imej: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Mee Rebus'
+            },
+            {
+                id: 'm4',
+                nama: 'Asam Pedas Pari Melaka',
+                kategori: 'makanan',
+                harga: 16.50,
+                laris: true,
+                penerangan: 'Keenakan ikan pari segar yang bersatu dengan keasidan bendi, tomato dan kuah pedas herba yang menusuk kalbu.',
+                imej: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Asam Pedas Pari'
+            },
+            {
+                id: 'm5',
+                nama: 'Nasi Goreng Kampung Udang Galah',
+                kategori: 'makanan',
+                harga: 15.00,
+                laris: false,
+                penerangan: 'Nasi goreng cili padi, ikan bilis garing ditambah dengan 2 ekor udang galah segar yang dimasak sempurna.',
+                imej: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Nasi Goreng Kampung'
+            },
+            {
+                id: 'm6',
+                nama: 'Ayam Masak Merah Kenduri',
+                kategori: 'makanan',
+                harga: 7.50,
+                laris: false,
+                penerangan: 'Ayam goreng kunyit yang digaul mesra dengan sambal tomato manis beraroma serai dan daun limau purut.',
+                imej: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Ayam Masak Merah'
+            },
+            {
+                id: 'm7',
+                nama: 'Daging Salai Lemak Cili Api',
+                kategori: 'makanan',
+                harga: 14.50,
+                laris: true,
+                penerangan: 'Daging lembu disalai menggunakan kayu arang, dimasak lemak kuning pekat bersama belimbing buluh yang masam pedas.',
+                imej: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Daging Salai Lemak'
+            },
+            {
+                id: 'm8',
+                nama: 'Ikan Bakar Petai Ibu',
+                kategori: 'makanan',
+                harga: 18.00,
+                laris: false,
+                penerangan: 'Ikan siakap segar diselaputi sambal herba istimewa, dibakar wangi dalam daun pisang berserta timbunan petai.',
+                imej: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Ikan Bakar'
+            },
+            {
+                id: 'm9',
+                nama: 'Satay Ayam Madu (6 Cucuk)',
+                kategori: 'makanan',
+                harga: 9.00,
+                laris: false,
+                penerangan: 'Isi ayam lembut yang diperap semalaman bersama serai, halia dan madu lebah asli, dibakar harum bersama kuah kacang pekat.',
+                imej: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Satay Ayam'
+            },
+            {
+                id: 'm10',
+                nama: 'Roti Canai Banjir Special',
+                kategori: 'makanan',
+                harga: 5.50,
+                laris: false,
+                penerangan: 'Kepingan roti canai garing yang dicarik-carik, dibanjiri dengan campuran dhal, kuah kari ikan, sambal merah dan telur separuh masak.',
+                imej: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Roti Canai'
+            },
+
+            // --- MINUMAN (1 hingga 10) ---
+            {
+                id: 'd1',
+                nama: 'Teh Tarik Madu Berbuih',
+                kategori: 'minuman',
+                harga: 4.50,
+                laris: true,
+                penerangan: 'Teh premium yang ditarik sehingga berbuih tebal, ditambah kemanisan madu asli lebah hutan.',
+                imej: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Teh Tarik Madu'
+            },
+            {
+                id: 'd2',
+                nama: 'Sirap Bandung Selasih Padu',
+                kategori: 'minuman',
+                harga: 3.80,
+                laris: false,
+                penerangan: 'Kombinasi klasik sirap ros, susu sejat berkrim, air soda, dan ditaburi biji selasih berkhasiat.',
+                imej: 'https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Sirap Bandung Selasih'
+            },
+            {
+                id: 'd3',
+                nama: 'Kopi Kampung Kaw Saji',
+                kategori: 'minuman',
+                harga: 3.50,
+                laris: true,
+                penerangan: 'Biji kopi tempatan yang dipanggang dengan mentega, memberikan rasa pahit-manis pekat tradisional.',
+                imej: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Kopi Kampung'
+            },
+            {
+                id: 'd4',
+                nama: 'Air Jagung Kaw Meleleh',
+                kategori: 'minuman',
+                harga: 5.00,
+                laris: false,
+                penerangan: 'Pati jagung manis berkrim disajikan sejuk bersama ketulan jagung manis manis madu di dalamnya.',
+                imej: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Air Jagung'
+            },
+            {
+                id: 'd5',
+                nama: 'Teh O Ais Limau Kasturi',
+                kategori: 'minuman',
+                harga: 3.50,
+                laris: false,
+                penerangan: 'Teh hitam sejuk yang segar, dicampur perahan jus limau kasturi segar untuk menaikkan aroma kemasaman semulajadi.',
+                imej: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Teh O Ais Limau'
+            },
+            {
+                id: 'd6',
+                nama: 'Jus Kedondong Asam Boi',
+                kategori: 'minuman',
+                harga: 5.50,
+                laris: true,
+                penerangan: 'Buah kedondong segar yang dikisar halus, ditambah asam boi putih untuk gabungan rasa masam manis masin yang menyegarkan.',
+                imej: 'https://images.unsplash.com/photo-1536882240095-0379873feb4e?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Kedondong Ais'
+            },
+            {
+                id: 'd7',
+                nama: 'Air Kelapa Muda Segar',
+                kategori: 'minuman',
+                harga: 6.00,
+                laris: false,
+                penerangan: 'Air kelapa murni yang diambil terus dari buah kelapa muda segar, kaya dengan khasiat elektrolit semulajadi.',
+                imej: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Kelapa Muda'
+            },
+            {
+                id: 'd8',
+                nama: 'Milo Dinosaur Melimpah',
+                kategori: 'minuman',
+                harga: 6.50,
+                laris: true,
+                penerangan: 'Minuman coklat malt kegemaran ramai disajikan sejuk berkrim, ditimbuni dengan serbuk Milo kaw melimpah di atasnya.',
+                imej: 'https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Milo Dinosaur'
+            },
+            {
+                id: 'd9',
+                nama: 'Air Mata Kucing Klasik',
+                kategori: 'minuman',
+                harga: 4.00,
+                laris: false,
+                penerangan: 'Minuman herba tradisional buah longan kering yang direbus bersama gula batu dan daun pandan wangi, sesuai penyejuk badan.',
+                imej: 'https://images.unsplash.com/photo-1508253730651-e5ace80a7025?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Mata Kucing'
+            },
+            {
+                id: 'd10',
+                nama: 'Jus Tembikai Laici',
+                kategori: 'minuman',
+                harga: 6.00,
+                laris: false,
+                penerangan: 'Kandungan buah tembikai merah manis yang dikisar tulen bersama buah laici putih wangi yang manis ranum.',
+                imej: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80',
+                fallbackImej: 'Tembikai Laici'
+            }
+        ];
+
+        // State Aplikasi (In-Memory)
+        let troli = [];
+        let noMejaPelanggan = "";
+        const WHATSAPP_NO = "60123456789"; // Ganti dengan nombor telefon restoran anda yang betul
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            muatMenu('semua');
+            kemaskiniTroliUI();
+        });
+
+        // Aliran Navigasi Halaman
+        function bukaMenu() {
+            const welcome = document.getElementById('welcome-page');
+            const menu = document.getElementById('menu-page');
+            const tableInput = document.getElementById('welcome-table-no');
+            const errorMsg = document.getElementById('table-error');
+            
+            // Validasi Nombor Meja (Wajib Diisi Sebelum Mula)
+            const tableValue = tableInput.value.trim();
+            if (!tableValue) {
+                errorMsg.classList.remove('hidden');
+                tableInput.classList.add('border-red-500', 'animate-shake');
+                return;
+            }
+
+            // Simpan Nombor Meja ke dalam State
+            noMejaPelanggan = tableValue;
+            errorMsg.classList.add('hidden');
+            tableInput.classList.remove('border-red-500');
+
+            // Kemaskini Lencana Meja di Menu Page & Input dalam Checkout
+            document.getElementById('active-table-badge').innerText = `Meja - ${noMejaPelanggan}`;
+            document.getElementById('table-or-address').value = noMejaPelanggan;
+
+            welcome.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                welcome.classList.add('hidden');
+                menu.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 500);
+        }
+
+        function kembaliKeWelcome() {
+            const welcome = document.getElementById('welcome-page');
+            const menu = document.getElementById('menu-page');
+            
+            welcome.classList.remove('hidden');
+            setTimeout(() => {
+                welcome.classList.remove('opacity-0', 'pointer-events-none');
+                menu.classList.add('hidden');
+            }, 50);
+        }
+
+        // Paparkan Menu Mengikut Kategori (Batik Klasik Card Design)
+        function muatMenu(kategori) {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+
+            const senaraiTapis = kategori === 'semua' ? MENU_DATA : MENU_DATA.filter(item => item.kategori === kategori);
+
+            senaraiTapis.forEach(item => {
+                const kad = document.createElement('div');
+                kad.className = "bg-navy-900 border border-gold-500/20 rounded-2xl overflow-hidden hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between group shadow-lg hover:shadow-gold-950/20";
+                
+                // Bina Badge Laris
+                const badgeLaris = item.laris ? 
+                    `<span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md z-10 animate-pulse flex items-center gap-1">
+                        <i data-lucide="award" class="w-3 h-3"></i> Laris
+                    </span>` : '';
+
+                kad.innerHTML = `
+                    <div class="relative overflow-hidden h-48 md:h-52 bg-navy-950">
+                        ${badgeLaris}
+                        <img src="${item.imej}" 
+                             alt="${item.fallbackImej}" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80';"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start gap-2 mb-2">
+                                <h3 class="font-serif text-lg md:text-xl font-bold text-white group-hover:text-gold-300 transition-colors">
+                                    ${item.nama}
+                                </h3>
+                                <span class="font-mono text-gold-400 font-bold text-base whitespace-nowrap">
+                                    RM ${item.harga.toFixed(2)}
+                                </span>
+                            </div>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                                ${item.penerangan}
+                            </p>
+                        </div>
+                        <button onclick="tambahKeTroli('${item.id}')" class="w-full bg-gold-950/80 hover:bg-gold-500 hover:text-navy-950 text-gold-300 border border-gold-500/30 hover:border-transparent font-bold py-2.5 px-4 rounded-xl text-xs md:text-sm flex items-center justify-center gap-2 transition-all duration-200">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            Tambah ke Troli
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(kad);
+            });
+            lucide.createIcons();
+        }
+
+        // Tapis Tab Menu
+        function tapisMenu(kategori) {
+            ['semua', 'makanan', 'minuman'].forEach(kat => {
+                const tab = document.getElementById(`tab-${kat}`);
+                if (kat === kategori) {
+                    tab.className = "px-4 py-1.5 rounded-full font-medium transition-all duration-200 bg-gold-500 text-navy-950";
+                } else {
+                    tab.className = "px-4 py-1.5 rounded-full font-medium transition-all duration-200 text-gray-400 hover:text-gold-400";
+                }
+            });
+            muatMenu(kategori);
+        }
+
+        // LOGIK TROLI & CHECKOUT
+
+        // Tambah Item Ke Troli
+        function tambahKeTroli(id) {
+            const itemAsal = MENU_DATA.find(item => item.id === id);
+            const itemDalamTroli = troli.find(item => item.id === id);
+
+            if (itemDalamTroli) {
+                itemDalamTroli.kuantiti += 1;
+            } else {
+                troli.push({
+                    ...itemAsal,
+                    kuantiti: 1
+                });
+            }
+
+            kemaskiniTroliUI();
+            
+            // Animasi kecil di butang troli mini
+            const miniCart = document.getElementById('troli-count').parentElement;
+            miniCart.classList.add('scale-110', 'bg-gold-500');
+            setTimeout(() => {
+                miniCart.classList.remove('scale-110', 'bg-gold-500');
+            }, 300);
+        }
+
+        // Kurangkan / Naikkan Kuantiti Dalam Troli
+        function ubahKuantiti(id, nilai) {
+            const item = troli.find(item => item.id === id);
+            if (!item) return;
+
+            item.kuantiti += nilai;
+            if (item.kuantiti <= 0) {
+                troli = troli.filter(item => item.id !== id);
+            }
+            kemaskiniTroliUI();
+        }
+
+        // Kemaskini Semua Elemen UI Troli
+        function kemaskiniTroliUI() {
+            const totalCount = troli.reduce((sum, item) => sum + item.kuantiti, 0);
+            const subtotal = troli.reduce((sum, item) => sum + (item.harga * item.kuantiti), 0);
+            
+            const totalKeseluruhan = subtotal;
+
+            // Kemaskini Kaunter Mini & Floating Bar
+            document.getElementById('troli-count').innerText = totalCount;
+            
+            const floatingBar = document.getElementById('floating-cart');
+            if (totalCount > 0) {
+                floatingBar.classList.remove('translate-y-32', 'opacity-0');
+                document.getElementById('floating-cart-text').innerText = `${totalCount} Hidangan Ditambah`;
+                document.getElementById('floating-cart-price').innerText = `Jumlah: RM ${totalKeseluruhan.toFixed(2)}`;
+            } else {
+                floatingBar.classList.add('translate-y-32', 'opacity-0');
+            }
+
+            // Kemaskini Bahagian Modal Pane
+            const senaraiTroli = document.getElementById('cart-items');
+            if (troli.length === 0) {
+                senaraiTroli.innerHTML = `
+                    <div class="text-center py-16 text-gray-500">
+                        <i data-lucide="shopping-bag" class="w-16 h-16 mx-auto mb-3 opacity-30 text-gold-400"></i>
+                        <p class="font-serif text-lg text-gold-300/80">Troli anda masih kosong.</p>
+                        <p class="text-xs mt-1">Pilih hidangan kegemaran anda untuk meneruskan pesanan.</p>
+                    </div>
+                `;
+            } else {
+                senaraiTroli.innerHTML = '';
+                troli.forEach(item => {
+                    const baris = document.createElement('div');
+                    baris.className = "flex items-center gap-3 bg-navy-950 p-3 rounded-xl border border-gold-500/10";
+                    baris.innerHTML = `
+                        <img src="${item.imej}" alt="${item.nama}" class="w-14 h-14 object-cover rounded-lg border border-gold-500/20">
+                        <div class="flex-grow">
+                            <h4 class="text-xs font-semibold text-white line-clamp-1">${item.nama}</h4>
+                            <p class="text-xs text-gold-400 font-mono font-bold mt-0.5">RM ${(item.harga * item.kuantiti).toFixed(2)}</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class="flex items-center bg-navy-900 border border-gold-500/20 rounded-md">
+                                    <button onclick="ubahKuantiti('${item.id}', -1)" class="px-2 py-0.5 text-gray-400 hover:text-white text-xs font-bold">-</button>
+                                    <span class="px-2 text-xs font-mono text-white font-semibold">${item.kuantiti}</span>
+                                    <button onclick="ubahKuantiti('${item.id}', 1)" class="px-2 py-0.5 text-gray-400 hover:text-white text-xs font-bold">+</button>
+                                </div>
+                                <button onclick="hapusItem('${item.id}')" class="text-red-500 hover:text-red-400 text-[10px] font-semibold flex items-center gap-0.5">
+                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Padam
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    senaraiTroli.appendChild(baris);
+                });
+            }
+
+            // Kemaskini Pengiraan Modal
+            document.getElementById('summary-subtotal').innerText = `RM ${subtotal.toFixed(2)}`;
+            document.getElementById('summary-total').innerText = `RM ${totalKeseluruhan.toFixed(2)}`;
+            
+            lucide.createIcons();
+        }
+
+        // Hapus Item Sepenuhnya dari Troli
+        function hapusItem(id) {
+            troli = troli.filter(item => item.id !== id);
+            kemaskiniTroliUI();
+        }
+
+        // Tukar Jenis Pesanan (Ubah ketampakan input no meja berdasarkan Dine-in)
+        function tukarJenisPesanan() {
+            const tipe = document.getElementById('order-type').value;
+            const inputMejaAlamat = document.getElementById('table-or-address');
+
+            if (tipe === 'Dine-in') {
+                inputMejaAlamat.value = noMejaPelanggan;
+                inputMejaAlamat.placeholder = "No Meja Anda *";
+                inputMejaAlamat.readOnly = true;
+            } else if (tipe === 'Takeaway') {
+                inputMejaAlamat.value = "";
+                inputMejaAlamat.placeholder = "Masa Ambil (Cth: 1:30 PM)";
+                inputMejaAlamat.readOnly = false;
+            } else {
+                inputMejaAlamat.value = "";
+                inputMejaAlamat.placeholder = "Alamat Penghantaran Lengkap *";
+                inputMejaAlamat.readOnly = false;
+            }
+        }
+
+        // Tunjuk / Tutup Modal Troli Pane
+        function bukaModalTroli() {
+            const modal = document.getElementById('cart-modal');
+            const pane = document.getElementById('cart-pane');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            pane.classList.remove('translate-x-full');
+            document.getElementById('checkout-error').classList.add('hidden');
+        }
+
+        function tutupModalTroli() {
+            const modal = document.getElementById('cart-modal');
+            const pane = document.getElementById('cart-pane');
+            modal.classList.add('pointer-events-none', 'opacity-0');
+            pane.classList.add('translate-x-full');
+        }
+
+        // PROSES CHECKOUT & INTEGRASI KE FIREBASE (Sesuai dengan RULE 1, 2, 3)
+        async function hantarPesananWhatsApp() {
+            const nama = document.getElementById('customer-name').value.trim();
+            const jenisPesanan = document.getElementById('order-type').value;
+            const butiranLokasi = document.getElementById('table-or-address').value.trim();
+            const nota = document.getElementById('order-note').value.trim();
+            const errorBox = document.getElementById('checkout-error');
+            const btnSubmit = document.getElementById('btn-submit-order');
+            const btnSubmitText = document.getElementById('btn-submit-text');
+
+            errorBox.classList.add('hidden');
+
+            // Validasi Input (Tiada panggilan alert browser - Sesuai Mandat Visual & Iframe)
+            if (troli.length === 0) {
+                errorBox.innerText = "Troli anda kosong! Sila pilih sekurang-kurangnya satu hidangan.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            if (!nama) {
+                errorBox.innerText = "Sila isi nama penuh anda terlebih dahulu.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            if ((jenisPesanan === 'Dine-in' || jenisPesanan === 'Delivery') && !butiranLokasi) {
+                const jenisTeks = jenisPesanan === 'Dine-in' ? 'No Meja' : 'Alamat Penghantaran';
+                errorBox.innerText = `Sila isi ${jenisTeks} untuk melengkapkan pesanan.`;
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            // Mulakan Status Menunggu (Loading state)
+            btnSubmit.disabled = true;
+            btnSubmitText.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Menyimpan Pesanan...`;
+            lucide.createIcons();
+
+            // Sediakan Data Pesanan
+            const subtotal = troli.reduce((sum, item) => sum + (item.harga * item.kuantiti), 0);
+            const totalKeseluruhan = subtotal;
+
+            const structuredItems = troli.map(item => ({
+                id: item.id,
+                nama: item.nama,
+                harga: item.harga,
+                kuantiti: item.kuantiti,
+                jumlahHarga: item.harga * item.kuantiti
+            }));
+
+            // Tulis Pesanan ke Firebase Firestore (Sesuai RULE 1 & RULE 3)
+            try {
+                if (!currentUser) {
+                    // Cuba sign in semula sekiranya auth belum sedia
+                    await initAuth();
+                }
+
+                if (currentUser) {
+                    const orderData = {
+                        customerId: currentUser.uid,
+                        customerName: nama,
+                        orderType: jenisPesanan,
+                        tableOrAddress: butiranLokasi,
+                        items: structuredItems,
+                        subtotal: subtotal,
+                        totalPrice: totalKeseluruhan,
+                        note: nota,
+                        status: 'baru',
+                        createdAt: serverTimestamp()
+                    };
+
+                    // Menyimpan ke koleksi awam mengikut format ketat RULE 1
+                    const collectionRef = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
+                    await addDoc(collectionRef, orderData);
+                } else {
+                    console.warn("Pesanan disimpan secara lokal sahaja kerana tiada sambungan auth aktif.");
+                }
+
+                // Bina Mesej Teks WhatsApp dengan format kemas & profesional
+                let mesej = `*🔴 TEMPAHAN BARU - WARUNG IBU* 🔴\n`;
+                mesej += `==================================\n\n`;
+                mesej += `*PELANGGAN:*\n`;
+                mesej += `👤 Nama: ${nama}\n`;
+                mesej += `📌 Jenis: ${jenisPesanan}\n`;
+                mesej += `📍 Butiran: ${butiranLokasi}\n\n`;
+
+                mesej += `*PESANAN HIDANGAN:*\n`;
+                troli.forEach((item, index) => {
+                    mesej += `${index + 1}. ${item.nama} (x${item.kuantiti}) - RM ${(item.harga * item.kuantiti).toFixed(2)}\n`;
+                });
+                
+                mesej += `\n==================================\n`;
+                mesej += `*JUMLAH KESELURUHAN: RM ${totalKeseluruhan.toFixed(2)}*\n`;
+                mesej += `==================================\n\n`;
+
+                if (nota) {
+                    mesej += `*NOTA KEPADA DAPUR:* \n_"${nota}"_\n\n`;
+                }
+
+                mesej += `Sila sahkan tempahan saya dari ${jenisPesanan === 'Dine-in' ? 'nombor meja ' + butiranLokasi : 'tempahan ini'}. Terima kasih! ❤️`;
+
+                // Buka API WhatsApp (Mesej dikodkan untuk url)
+                const urlMesej = encodeURIComponent(mesej);
+                const waUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NO}&text=${urlMesej}`;
+                
+                // Kosongkan troli & tutup modal
+                troli = [];
+                kemaskiniTroliUI();
+                tutupModalTroli();
+
+                window.open(waUrl, '_blank');
+
+            } catch (error) {
+                console.error("Gagal menyimpan pesanan ke Firebase:", error);
+                errorBox.innerText = "Ralat sistem dikesan semasa menyimpan pesanan. Sila cuba lagi.";
+                errorBox.classList.remove('hidden');
+            } finally {
+                // Pulihkan butang semula
+                btnSubmit.disabled = false;
+                btnSubmitText.innerHTML = `
+                    <i class="w-5 h-5 fill-white stroke-none" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;white&quot;><path d=&quot;M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.419 5.422.001 12.08.001c3.225.001 6.258 1.257 8.541 3.543 2.282 2.287 3.537 5.32 3.536 8.542-.002 6.662-5.422 12.08-12.08 12.08-2.002-.002-3.973-.499-5.736-1.442L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.564 0 10.093-4.527 10.095-10.09C21.648 4.78 17.13 2.25 12.084 2.25c-5.56 0-10.09 4.526-10.092 10.09-.001 1.815.496 3.42 1.433 4.98L2.43 21.73l4.217-1.106-.001-.001z&quot;/></svg>'); background-repeat: no-repeat; width: 1.25rem; height: 1.25rem;"></i>
+                    Hantar Pesanan & WhatsApp
+                `;
+                lucide.createIcons();
+            }
+        }
+
+        // Ikat semua fungsi ke tetingkap Global (window) agar dapat dipanggil dari element HTML inline click event
+        window.bukaMenu = bukaMenu;
+        window.kembaliKeWelcome = kembaliKeWelcome;
+        window.tapisMenu = tapisMenu;
+        window.tambahKeTroli = tambahKeTroli;
+        window.ubahKuantiti = ubahKuantiti;
+        window.hapusItem = hapusItem;
+        window.tukarJenisPesanan = tukarJenisPesanan;
+        window.bukaModalTroli = bukaModalTroli;
+        window.tutupModalTroli = tutupModalTroli;
+        window.hantarPesananWhatsApp = hantarPesananWhatsApp;
+
+    </script>
+</body>
+</html>
