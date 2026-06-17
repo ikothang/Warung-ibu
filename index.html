@@ -915,7 +915,8 @@
                         subtotal: subtotal,
                         totalPrice: totalKeseluruhan,
                         note: nota,
-                        status: 'baru',
+                        status: 'baru', // Status tempahan lalai
+                        paid: false,    // Menandakan status pembayaran belum dibuat
                         createdAt: serverTimestamp()
                     };
 
@@ -936,7 +937,7 @@
 
             } catch (error) {
                 console.error("Gagal menyimpan pesanan ke Firebase:", error);
-                errorBox.innerText = "Ralat ketika menghantar ke pangkalan data. Sila pastikan seleras konfigurasi anda.";
+                errorBox.innerText = "Ralat ketika menghantar ke pangkalan data. Sila pastikan sambungan internet anda stabil.";
                 errorBox.classList.remove('hidden');
             } finally {
                 // Pulihkan semula butang
