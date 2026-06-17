@@ -1,63 +1,194 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warung Ibu - Menu Digital Interaktif</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .batik-bg { background-color: #020617; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Warung Ibu</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body class="font-sans text-gray-100 bg-navy-950">
+<body class="bg-slate-900 text-white min-h-screen p-6">
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+<div class="max-w-md mx-auto">
 
-        // Konfigurasi dikemaskini untuk membaiki ralat auth/configuration-not-found
-        const firebaseConfig = {
-            apiKey: "AIzaSyDyrX1WmJ67x3w5PDAW6v2yJazT49ZQa7g",
-            authDomain: "restoran-dd4bd.firebaseapp.com",
-            projectId: "restoran-dd4bd",
-            databaseURL: "https://restoran-dd4bd-default-rtdb.asia-southeast1.firebasedatabase.app/",
-            storageBucket: "restoran-dd4bd.firebasestorage.app",
-            messagingSenderId: "44849081363",
-            appId: "1:44849081363:web:1a56f2ebc972f5227be3e6"
+    <h1 class="text-2xl font-bold mb-6">
+        Warung Ibu
+    </h1>
+
+    <div class="space-y-4">
+
+        <input
+            id="customer-name"
+            type="text"
+            placeholder="Nama Pelanggan"
+            class="w-full p-3 rounded text-black"
+        >
+
+        <input
+            id="table-no"
+            type="text"
+            placeholder="No Meja"
+            class="w-full p-3 rounded text-black"
+        >
+
+        <select
+            id="order-type"
+            class="w-full p-3 rounded text-black"
+        >
+            <option value="Dine-in">Dine-in</option>
+            <option value="Takeaway">Takeaway</option>
+            <option value="Delivery">Delivery</option>
+        </select>
+
+        <button
+            onclick="hantarPesananDatabase()"
+            class="w-full bg-green-600 hover:bg-green-700 p-3 rounded font-bold"
+        >
+            Hantar Pesanan
+        </button>
+
+    </div>
+
+    <div id="status" class="mt-4 text-sm"></div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+
+import {
+    getAuth,
+    signInAnonymously,
+    onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+import {
+    getDatabase,
+    ref,
+    push,
+    set
+}
+from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDyrX1WmJ67x3w5PDAW6v2yJazT49ZQa7g",
+    authDomain: "restoran-dd4bd.firebaseapp.com",
+    databaseURL: "https://restoran-dd4bd-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "restoran-dd4bd",
+    storageBucket: "restoran-dd4bd.firebasestorage.app",
+    messagingSenderId: "44849081363",
+    appId: "1:44849081363:web:1a56f2ebc972f5227be3e6"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getDatabase(app);
+
+let currentUser = null;
+
+const statusBox = document.getElementById("status");
+
+signInAnonymously(auth)
+.then(() => {
+
+    statusBox.innerHTML =
+        "✅ Firebase Authentication berjaya";
+
+})
+.catch((error) => {
+
+    console.error(error);
+
+    statusBox.innerHTML =
+        "❌ Authentication gagal: " + error.message;
+
+});
+
+onAuthStateChanged(auth, (user) => {
+
+    currentUser = user;
+
+    console.log("Current User:", user?.uid);
+
+});
+
+window.hantarPesananDatabase = async function() {
+
+    if (!currentUser) {
+
+        alert("Firebase belum bersedia.");
+
+        return;
+    }
+
+    try {
+
+        const customerName =
+            document.getElementById("customer-name").value.trim();
+
+        const tableNo =
+            document.getElementById("table-no").value.trim();
+
+        const orderType =
+            document.getElementById("order-type").value;
+
+        if (!customerName) {
+
+            alert("Sila masukkan nama pelanggan");
+
+            return;
+        }
+
+        const orderData = {
+
+            customerId: currentUser.uid,
+
+            customerName: customerName,
+
+            tableNo: tableNo,
+
+            orderType: orderType,
+
+            status: "baru",
+
+            createdAt: Date.now()
+
         };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getDatabase(app);
+        const ordersRef = ref(db, "orders");
 
-        // Autentikasi Tanpa Nama
-        signInAnonymously(auth).then(() => {
-            console.log("Autentikasi berjaya");
-        }).catch((error) => {
-            console.error("Ralat Autentikasi:", error.code, error.message);
-        });
+        const newOrderRef = push(ordersRef);
 
-        // Fungsi Simpan Pesanan
-        window.hantarPesananDatabase = async () => {
-            try {
-                const orderData = {
-                    customerName: document.getElementById('customer-name')?.value || "Pelanggan",
-                    timestamp: Date.now(),
-                    status: "baru"
-                };
+        await set(newOrderRef, orderData);
 
-                const ordersRef = ref(db, 'orders'); 
-                const newOrderRef = push(ordersRef);
-                await set(newOrderRef, orderData);
-                
-                alert("Pesanan berjaya dihantar!");
-            } catch (error) {
-                console.error("Ralat RTDB:", error);
-                alert("Gagal menyimpan ke Firebase: " + error.message);
-            }
-        };
-    </script>
+        alert("Pesanan berjaya dihantar");
+
+        console.log("Order ID:", newOrderRef.key);
+
+        document.getElementById("customer-name").value = "";
+        document.getElementById("table-no").value = "";
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Gagal simpan ke Firebase:\n" +
+            error.message
+        );
+
+    }
+
+};
+
+</script>
+
 </body>
 </html>
