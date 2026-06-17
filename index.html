@@ -350,11 +350,11 @@
     </div>
 
 
-    <!-- ================= DATA, JAVASCRIPT & INTEGRASI FIREBASE ================= -->
+    <!-- ================= DATA, JAVASCRIPT & INTEGRASI FIREBASE REALTIME DATABASE ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
 
         // Konfigurasi Firebase Dinamik dengan keutamaan pemboleh ubah persekitaran
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
@@ -369,15 +369,20 @@
                 measurementId: "G-GME7877LYX"
             };
 
-        // Inisialisasi Firebase & Firestore
+        // Memastikan parameter databaseURL diselaraskan dengan Realtime Database
+        if (!firebaseConfig.databaseURL) {
+            firebaseConfig.databaseURL = `https://${firebaseConfig.projectId}-default-rtdb.firebaseio.com`;
+        }
+
+        // Inisialisasi Firebase & Realtime Database (Bukan Cloud Firestore)
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const db = getFirestore(app);
+        const db = getDatabase(app);
         
         // Dapatkan appId secara selamat atau guna laluan default restoran
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'restoran-dd4bd';
         
-        // Simpan pemboleh ubah dinamik aplikasi secara global pada tetingkap window (Menyelesaikan isu ReferenceError)
+        // Simpan pemboleh ubah dinamik aplikasi secara global pada tetingkap window
         window.troli = [];
         window.noMejaPelanggan = "";
         window.currentUser = null;
@@ -596,7 +601,7 @@
                 kategori: 'minuman',
                 harga: 4.00,
                 laris: false,
-                penerangan: 'Minuman herba tradisional buah longan kering yang direbus bersama gula batu dan daun pandan wangi, sesuai penyejuk badan.',
+                penerangan: 'Minuman herba tradisional buah longan kering yang direbus bersama gula batu and daun pandan wangi, sesuai penyejuk badan.',
                 imej: 'https://images.unsplash.com/photo-1508253730651-e5ace80a7025?auto=format&fit=crop&w=600&q=80',
                 fallbackImej: 'Mata Kucing'
             },
@@ -917,12 +922,13 @@
                         note: nota,
                         status: 'baru', // Status tempahan lalai
                         paid: false,    // Menandakan status pembayaran belum dibuat
-                        createdAt: serverTimestamp()
+                        createdAt: Date.now() // Rekod timestamp real-time untuk RTDB
                     };
 
-                    // Laluan Firestore Standard Artifact mengikut RULE 1
-                    const collectionRef = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
-                    await addDoc(collectionRef, orderData);
+                    // Menyimpan ke Firebase Realtime Database mengikut format penulisan laluan standard
+                    const ordersRef = ref(db, `artifacts/${appId}/public/data/orders`);
+                    const newOrderRef = push(ordersRef);
+                    await set(newOrderRef, orderData);
 
                     // Tutup Modal Troli
                     tutupModalTroli();
@@ -936,8 +942,8 @@
                 }
 
             } catch (error) {
-                console.error("Gagal menyimpan pesanan ke Firebase:", error);
-                errorBox.innerText = "Ralat ketika menghantar ke pangkalan data. Sila pastikan sambungan internet anda stabil.";
+                console.error("Gagal menyimpan pesanan ke Firebase RTDB:", error);
+                errorBox.innerText = "Ralat ketika menghantar ke pangkalan data Realtime. Sila pastikan sambungan internet anda stabil.";
                 errorBox.classList.remove('hidden');
             } finally {
                 // Pulihkan semula butang
