@@ -29,16 +29,16 @@
           },
           colors: {
             sogan: {
-              900: '#1e0f06', // Cokelat Sogan paling gelap
-              800: '#2e190d', // Cokelat Sogan klasik
-              700: '#4a2c18', // Cokelat suam medium
-              600: '#6b4427', // Cokelat kayu
-              500: '#8c5d37', // Emas-cokelat kusam
-              400: '#b88955', // Cokelat keemasan muda
-              300: '#d6aa75', // Krem keemasan hangat
-              200: '#edd6b8', // Krem kain mori
-              100: '#f7f0e6', // Putih gading klasik
-              gold: '#cfa240', // Aksen batik prada emas
+              900: '#1e0f06',
+              800: '#2e190d',
+              700: '#4a2c18',
+              600: '#6b4427',
+              500: '#8c5d37',
+              400: '#b88955',
+              300: '#d6aa75',
+              200: '#edd6b8',
+              100: '#f7f0e6',
+              gold: '#cfa240',
             }
           }
         }
@@ -47,20 +47,17 @@
   </script>
 
   <style>
-    /* Corak Latar Belakang Batik Kawung Tradisional */
     .bg-batik-pattern {
       background-color: #f7f0e6;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 C 40 22, 22 40, 0 40 C 22 40, 40 58, 40 80 C 40 58, 58 40, 80 40 C 58 40, 40 22, 40 0 Z' fill='%23b88955' fill-opacity='0.08'/%3E%3Ccircle cx='40' cy='40' r='6' fill='%236b4427' fill-opacity='0.12'/%3E%3Ccircle cx='0' cy='0' r='5' fill='%236b4427' fill-opacity='0.08'/%3E%3Ccircle cx='80' cy='0' r='5' fill='%236b4427' fill-opacity='0.08'/%3E%3Ccircle cx='0' cy='80' r='5' fill='%236b4427' fill-opacity='0.08'/%3E%3Ccircle cx='80' cy='80' r='5' fill='%236b4427' fill-opacity='0.08'/%3E%3Cpath d='M20 20 L60 60 M20 60 L60 20' stroke='%23b88955' stroke-width='1' stroke-opacity='0.05'/%3E%3C/svg%3E");
     }
 
-    /* Corak Sempadan Atas Batik */
     .batik-border-top {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'%3E%3Cpath d='M0 12 Q10 0, 20 12 Q30 0, 40 12' fill='none' stroke='%23cfa240' stroke-width='2'/%3E%3Cpath d='M0 0 L40 0' stroke='%232e190d' stroke-width='1'/%3E%3C/svg%3E");
       background-repeat: repeat-x;
       height: 12px;
     }
 
-    /* Bayangan Lembut Tema Sogan */
     .sogan-shadow {
       box-shadow: 0 10px 30px -10px rgba(46, 25, 13, 0.15);
     }
@@ -69,7 +66,6 @@
       border: 1px solid rgba(184, 137, 85, 0.25);
     }
 
-    /* Penyesuaian bar skrol tema Sogan */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -84,7 +80,6 @@
       background: #8c5d37;
     }
 
-    /* Kawalan Saiz Responsif Kanvas QR Code */
     #qrcode-canvas svg, 
     #qrcode-canvas canvas {
       max-width: 100% !important;
@@ -98,12 +93,8 @@
 </head>
 <body class="bg-batik-pattern font-sans text-sogan-900 min-h-screen flex flex-col antialiased">
 
-  <!-- Bahagian Pengepala (Header) -->
   <header class="bg-sogan-900 text-sogan-100 relative overflow-hidden shadow-2xl z-10">
-    <!-- Lapisan Gradien Sutera Batik -->
     <div class="absolute inset-0 bg-gradient-to-r from-sogan-900 via-sogan-800 to-sogan-900 opacity-90"></div>
-    
-    <!-- Garisan Hiasan Atas Batik Emas -->
     <div class="absolute left-0 right-0 bottom-0 batik-border-top"></div>
     
     <div class="max-w-6xl mx-auto px-4 py-8 md:py-10 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -115,15 +106,14 @@
           H3 Studio QR
         </h1>
         <p class="text-sogan-200 mt-2 text-sm md:text-base font-light tracking-wide max-w-lg">
-          Transform your digital data into high-aesthetic matrix codes.
+          Convert your digital data into high-aesthetic matrix codes.
         </p>
       </div>
       
-      <!-- Metadata Hiasan Sogan -->
       <div class="hidden md:flex items-center gap-4 text-sogan-gold border-l border-sogan-700/50 pl-6">
         <div class="text-right">
           <p class="text-xs text-sogan-400 uppercase tracking-widest">Traditional Style</p>
-          <p class="text-lg font-serif font-semibold text-sogan-200">Sogan Aesthetics</p>
+          <p class="text-lg font-serif font-semibold text-sogan-200">Sogan Aesthetic</p>
         </div>
         <div class="w-12 h-12 rounded-full border border-sogan-gold/40 flex items-center justify-center bg-sogan-800">
           <i class="fa-solid fa-feather-pointed text-xl"></i>
@@ -132,13 +122,10 @@
     </div>
   </header>
 
-  <!-- Kandungan Utama Dashboard -->
   <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
     
-    <!-- Bahagian Kiri: Input Data & Gaya (7 Kolum) -->
     <section class="lg:col-span-7 flex flex-col gap-6">
       
-      <!-- Panel 1: Tab Kandungan Data -->
       <div class="bg-white rounded-2xl sogan-shadow sogan-card-border overflow-hidden">
         <div class="bg-sogan-100/50 px-6 py-4 border-b border-sogan-300/30 flex items-center justify-between">
           <h2 class="font-serif text-lg font-bold text-sogan-800 flex items-center gap-2">
@@ -147,7 +134,6 @@
           <span class="text-xs text-sogan-500 font-medium">Select Data Type</span>
         </div>
         
-        <!-- Navigasi Bar Tab -->
         <div class="grid grid-cols-5 border-b border-sogan-200/50 text-[11px] md:text-sm bg-sogan-100/20">
           <button onclick="switchTab('url')" id="tab-url" class="tab-btn py-3 px-1 text-center font-semibold border-b-2 border-sogan-gold text-sogan-gold bg-white transition-all flex flex-col items-center gap-1">
             <i class="fa-solid fa-link text-lg"></i>
@@ -171,34 +157,30 @@
           </button>
         </div>
 
-        <!-- Kandungan Panel Tab -->
         <div class="p-6">
           
-          <!-- Tab 1: URL Web -->
           <div id="panel-url" class="tab-panel flex flex-col gap-3">
-            <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Web URL / Link Address</label>
+            <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Link Address / Web URL</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-sogan-400">
                 <i class="fa-solid fa-globe"></i>
               </span>
               <input type="url" id="input-url" value="https://h3studio.co" placeholder="https://example.com" class="w-full pl-10 pr-4 py-3 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none transition-all text-sm">
             </div>
-            <p class="text-xs text-sogan-500">The QR code will direct scanners to this website address instantly.</p>
+            <p class="text-xs text-sogan-500">The QR code will direct scanners straight to this URL.</p>
           </div>
 
-          <!-- Tab 2: Teks Biasa -->
           <div id="panel-text" class="tab-panel hidden flex flex-col gap-3">
-            <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Plain Text / Note</label>
+            <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Simple Text / Note</label>
             <textarea id="input-text" rows="3" placeholder="Enter text, secret message, or instructions here..." class="w-full px-4 py-3 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none transition-all text-sm resize-none"></textarea>
-            <p class="text-xs text-sogan-500">Stores static pure text readable by any offline scanner application.</p>
+            <p class="text-xs text-sogan-500">Stores static information that can be read offline.</p>
           </div>
 
-          <!-- Tab 3: Tetapan Wi-Fi -->
           <div id="panel-wifi" class="tab-panel hidden flex flex-col gap-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Network Name (SSID)</label>
-                <input type="text" id="wifi-ssid" placeholder="My Wi-Fi Network" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+                <input type="text" id="wifi-ssid" placeholder="Your Wi-Fi Name" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
               </div>
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Password</label>
@@ -218,67 +200,75 @@
                 <option value="nopass">No Password (Open Network)</option>
               </select>
             </div>
-            <p class="text-xs text-sogan-500">Allows users to scan and automatically connect to your Wi-Fi without typing credentials.</p>
+            <p class="text-xs text-sogan-500">Allows users to scan and connect automatically without typing the password.</p>
           </div>
 
-          <!-- Tab 4: Kad Kontak vCard -->
           <div id="panel-contact" class="tab-panel hidden flex flex-col gap-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Full Name</label>
-                <input type="text" id="contact-name" placeholder="Rian Hidayat" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+                <input type="text" id="contact-name" placeholder="John Doe" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
               </div>
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Phone Number</label>
-                <input type="tel" id="contact-phone" placeholder="+62812345678" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+                <input type="tel" id="contact-phone" placeholder="+60123456789" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
               </div>
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Work Email</label>
-                <input type="email" id="contact-email" placeholder="rian@h3studio.co" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+                <input type="email" id="contact-email" placeholder="john@example.com" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
               </div>
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Organization / Company</label>
-                <input type="text" id="contact-org" placeholder="H3 Studio Nusantara" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+                <input type="text" id="contact-org" placeholder="H3 Studio" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
               </div>
             </div>
-            <p class="text-xs text-sogan-500">Shares a digital virtual business card that users can directly save to their mobile contacts.</p>
+            <p class="text-xs text-sogan-500">Creates a digital vCard that can be saved directly to the device's contacts list.</p>
           </div>
 
-          <!-- Tab 5: Pautan Pintasan WhatsApp -->
           <div id="panel-wa" class="tab-panel hidden flex flex-col gap-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">WhatsApp Number</label>
-                <input type="tel" id="wa-phone" placeholder="628123456789" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
-                <span class="text-[10px] text-sogan-500">Use international format without leading '+' (e.g., 62812...)</span>
+                <input type="tel" id="wa-phone" placeholder="60123456789" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+                <span class="text-[10px] text-sogan-500">Use international format without the '+' sign (e.g., 6012...)</span>
               </div>
               <div class="flex flex-col gap-1.5">
                 <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Message Draft (Optional)</label>
-                <input type="text" id="wa-msg" placeholder="Hello H3 Studio, I would like to..." class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+                <input type="text" id="wa-msg" placeholder="Hello H3 Studio, I would like to ask..." class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
               </div>
             </div>
-            <p class="text-xs text-sogan-500">Directs scanners instantly to a direct WhatsApp chat window with your pre-configured text.</p>
+            <p class="text-xs text-sogan-500">Brings the scanner directly to your WhatsApp chat with a pre-filled message.</p>
           </div>
 
         </div>
       </div>
 
-      <!-- Panel 2: Pilihan Reka Bentuk Estetika -->
       <div class="bg-white rounded-2xl sogan-shadow sogan-card-border overflow-hidden">
         <div class="bg-sogan-100/50 px-6 py-4 border-b border-sogan-300/30 flex items-center justify-between">
           <h2 class="font-serif text-lg font-bold text-sogan-800 flex items-center gap-2">
-            <i class="fa-solid fa-wand-magic-sparkles text-sogan-gold"></i> 2. Touch of Sogan Aesthetics
+            <i class="fa-solid fa-wand-magic-sparkles text-sogan-gold"></i> 2. Sogan Aesthetic Touch
           </h2>
-          <span class="text-xs text-sogan-gold font-semibold"><i class="fa-solid fa-leaf"></i> Custom Design</span>
+          <span class="text-xs text-sogan-gold font-semibold"><i class="fa-solid fa-leaf"></i> Design</span>
         </div>
         
         <div class="p-6 flex flex-col gap-6">
           
-          <!-- Seksyen A: Pilihan Warna -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">QR Code Label Name</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-sogan-400">
+                <i class="fa-solid fa-signature"></i>
+              </span>
+              <input type="text" id="qr-name-input" value="H3 Studio QR" placeholder="Name displayed on image border..." oninput="renderQR()" class="w-full pl-10 pr-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
+            </div>
+            <span class="text-[10px] text-sogan-500">This label will be embedded with a special gold batik border when you download or share your QR image.</span>
+          </div>
+
+          <hr class="border-sogan-200/60">
+
           <div>
-            <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600 block mb-3">Code & Background Color</label>
+            <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600 block mb-3">Color & Background</label>
             
-            <!-- Preset Warna Batik Tradisional -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 mb-4">
               <button onclick="applyPreset('#2e190d', '#f7f0e6')" type="button" class="flex items-center gap-2 p-2 border border-sogan-300/60 rounded-xl hover:border-sogan-gold bg-sogan-100/10 text-xs text-left transition-all">
                 <span class="w-5 h-5 rounded-full border border-sogan-300 flex overflow-hidden">
@@ -326,37 +316,34 @@
 
           <hr class="border-sogan-200/60">
 
-          <!-- Seksyen B: Gaya Corak Titik dan Bingkai Sudut -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Dots Pattern Style</label>
+              <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Dot Pattern Style</label>
               <select id="qr-dot-style" onchange="renderQR()" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
-                <option value="rounded">Rounded (Elegant)</option>
-                <option value="dots">Pure Dots (Kawung Look)</option>
-                <option value="classy">Classy Artistic</option>
-                <option value="classy-rounded">Classy Rounded</option>
-                <option value="square" selected>Classic Square</option>
-                <option value="extra-rounded">Extra Rounded (Smooth)</option>
+                <option value="rounded">Soft Rounded (Elegant)</option>
+                <option value="dots">Dots (Kawung Look)</option>
+                <option value="classy">Classic Artistic</option>
+                <option value="classy-rounded">Arched Architecture</option>
+                <option value="square" selected>Traditional Square</option>
+                <option value="extra-rounded">Extra Smooth</option>
               </select>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Corner Ring Style (Eye)</label>
+              <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Frame Corner Style (Eye)</label>
               <select id="qr-eye-style" onchange="renderQR()" class="w-full px-4 py-2.5 bg-sogan-100/30 border border-sogan-300 rounded-xl focus:ring-2 focus:ring-sogan-gold focus:border-sogan-gold outline-none text-sm">
-                <option value="square" selected>Square Ring</option>
-                <option value="dot">Circular Ring</option>
-                <option value="rounded">Rounded Ring</option>
+                <option value="square" selected>Square</option>
+                <option value="dot">Circle</option>
+                <option value="rounded">Rounded</option>
               </select>
             </div>
           </div>
 
           <hr class="border-sogan-200/60">
 
-          <!-- Seksyen C: Muat Naik Logo Tengah & Skala Saiz -->
           <div class="flex flex-col gap-3">
             <label class="text-xs font-semibold uppercase tracking-wider text-sogan-600">Include Center Logo</label>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <!-- Preset Logo -->
               <button onclick="setLogoPreset('none')" id="logo-btn-none" type="button" class="logo-preset-btn py-2.5 border border-sogan-gold bg-sogan-100/20 text-sogan-800 text-xs font-medium rounded-xl transition-all">
                 No Logo
               </button>
@@ -370,13 +357,12 @@
             
             <input type="file" id="logo-file-input" accept="image/*" class="hidden" onchange="handleLogoUpload(event)">
             
-            <!-- Perincian Logo Tersuai & Bar Saiz Slider -->
             <div id="logo-settings-container" class="hidden mt-1 p-3 bg-sogan-100/20 rounded-xl border border-sogan-300/40 grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
               <div class="flex items-center gap-2">
                 <img id="logo-preview-img" src="" class="w-10 h-10 object-contain rounded border border-sogan-300 bg-white" alt="Preview logo">
                 <div>
                   <p id="logo-file-name" class="text-xs font-semibold text-sogan-800 truncate max-w-[150px]">Custom_Logo.png</p>
-                  <button type="button" onclick="removeUploadedLogo()" class="text-[10px] text-red-600 hover:underline">Remove Logo</button>
+                  <button type="button" onclick="removeUploadedLogo()" class="text-[10px] text-red-600 hover:underline">Remove</button>
                 </div>
               </div>
               <div class="flex flex-col gap-1">
@@ -391,23 +377,19 @@
 
     </section>
 
-    <!-- Bahagian Kanan: Pratinjau QR Live & Tindakan (5 Kolom) -->
     <section class="lg:col-span-5 flex flex-col gap-6">
       
-      <!-- Kad Kontainer Pratinjau Live -->
       <div class="bg-white rounded-2xl sogan-shadow sogan-card-border overflow-hidden sticky top-6">
         <div class="bg-sogan-900 text-sogan-gold px-6 py-4 flex items-center justify-between">
           <h2 class="font-serif text-lg font-bold flex items-center gap-2">
-            <i class="fa-solid fa-eye"></i> QR Preview
+            <i class="fa-solid fa-eye"></i> QR Code Preview
           </h2>
           <span class="text-xs bg-sogan-gold/10 text-sogan-gold border border-sogan-gold/20 px-2 py-0.5 rounded font-mono">Live</span>
         </div>
         
         <div class="p-6 flex flex-col items-center justify-center">
-          <!-- Bingkai Seni Sogan Membaluti QR -->
           <div class="relative bg-white p-6 rounded-2xl border-4 border-sogan-800 shadow-inner flex items-center justify-center aspect-square w-full max-w-[280px] mx-auto group overflow-hidden">
             
-            <!-- Ornamen Tradisional di 4 Sudut -->
             <div class="absolute top-1.5 left-1.5 w-5 h-5 border-t-2 border-l-2 border-sogan-gold"></div>
             <div class="absolute top-1.5 right-1.5 w-5 h-5 border-t-2 border-r-2 border-sogan-gold"></div>
             <div class="absolute bottom-1.5 left-1.5 w-5 h-5 border-b-2 border-l-2 border-sogan-gold"></div>
@@ -416,7 +398,6 @@
             <div id="qrcode-canvas" class="w-full h-full flex items-center justify-center overflow-hidden"></div>
           </div>
 
-          <!-- Pilihan Resolusi Muat Turun -->
           <div class="w-full mt-4 p-3 bg-sogan-100/40 rounded-xl border border-sogan-200/60">
             <div class="flex justify-between text-xs font-semibold text-sogan-700 mb-1">
               <span>Download Resolution (Px)</span>
@@ -425,28 +406,22 @@
             <input type="range" id="dl-resolution" min="400" max="2000" step="100" value="1000" oninput="updateResLabel(this.value)" class="w-full accent-sogan-gold">
           </div>
 
-          <!-- Tindakan Utama Eksportasi -->
           <div class="w-full grid grid-cols-1 gap-2 mt-5">
-            <!-- Butang Penuh Muat Turun PNG -->
             <button onclick="downloadQR('png')" class="w-full bg-sogan-800 hover:bg-sogan-900 active:bg-sogan-900 text-sogan-100 font-serif font-semibold py-3 px-4 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
               <i class="fa-solid fa-file-image"></i> Download PNG (Image)
             </button>
             
-            <!-- Tindakan Tambahan 3 Kolum -->
             <div class="grid grid-cols-3 gap-2">
-              <!-- Muat Turun SVG -->
               <button onclick="downloadQR('svg')" class="bg-sogan-100/50 hover:bg-sogan-100 border border-sogan-400 text-sogan-800 font-semibold py-2 px-1 rounded-xl text-[10px] transition-all flex flex-col items-center justify-center gap-1">
                 <i class="fa-solid fa-file-code text-sogan-gold text-sm"></i>
                 <span class="truncate w-full text-center">Download SVG</span>
               </button>
               
-              <!-- Kongsi QR Code (Butang Share) -->
               <button onclick="shareQR()" class="bg-sogan-100/50 hover:bg-sogan-100 border border-sogan-400 text-sogan-800 font-semibold py-2 px-1 rounded-xl text-[10px] transition-all flex flex-col items-center justify-center gap-1">
                 <i class="fa-solid fa-share-nodes text-sogan-gold text-sm"></i>
                 <span class="truncate w-full text-center">Share QR</span>
               </button>
               
-              <!-- Salin Kandungan Data -->
               <button onclick="copyToClipboard()" class="bg-sogan-100/50 hover:bg-sogan-100 border border-sogan-400 text-sogan-800 font-semibold py-2 px-1 rounded-xl text-[10px] transition-all flex flex-col items-center justify-center gap-1">
                 <i class="fa-solid fa-clipboard text-sogan-gold text-sm"></i>
                 <span class="truncate w-full text-center">Copy Link</span>
@@ -460,12 +435,11 @@
 
   </main>
 
-  <!-- Log Riwayat Penjanaan Kod QR Sesi Ini -->
   <section class="max-w-6xl w-full mx-auto px-4 pb-12">
     <div class="bg-white rounded-2xl sogan-shadow sogan-card-border overflow-hidden">
       <div class="bg-sogan-100/50 px-6 py-4 border-b border-sogan-300/30 flex items-center justify-between">
         <h2 class="font-serif text-lg font-bold text-sogan-800 flex items-center gap-2">
-          <i class="fa-solid fa-clock-rotate-left text-sogan-gold"></i> QR Generation History (This Session)
+          <i class="fa-solid fa-clock-rotate-left text-sogan-gold"></i> Session Generation History
         </h2>
         <button onclick="clearHistory()" class="text-xs text-red-600 font-medium hover:underline flex items-center gap-1">
           <i class="fa-solid fa-trash-can"></i> Clear
@@ -474,19 +448,16 @@
       
       <div class="p-6">
         <div id="history-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Item riwayat dimasukkan melalui fungsi Javascript -->
           <div id="no-history-msg" class="col-span-full text-center py-6 text-sogan-500 text-sm">
             <i class="fa-solid fa-folder-open text-3xl text-sogan-300 mb-2 block"></i>
-            No QR Code history in this session yet.
+            No QR generation history in this session yet.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Bahagian Kaki (Footer) Tradisional Klasik -->
   <footer class="bg-sogan-900 text-sogan-300 py-10 mt-auto border-t-4 border-sogan-gold relative overflow-hidden">
-    <!-- Corak Pudar Latar Belakang Batik Kawung -->
     <div class="absolute inset-0 opacity-5 bg-batik-pattern"></div>
     <div class="max-w-6xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="text-center md:text-left">
@@ -502,7 +473,6 @@
     </div>
   </footer>
 
-  <!-- Notifikasi Popup Toast Tersuai -->
   <div id="toast-notif" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 ease-out bg-sogan-900 text-sogan-100 px-5 py-3 rounded-xl border border-sogan-gold shadow-2xl flex items-center gap-3">
     <div class="w-8 h-8 rounded-full bg-sogan-gold/10 border border-sogan-gold/30 flex items-center justify-center text-sogan-gold">
       <i class="fa-solid fa-bell" id="toast-icon"></i>
@@ -513,31 +483,26 @@
     </div>
   </div>
 
-  <!-- SCRIPT LOGIK UTAMA APLIKASI -->
   <script>
-    // Pembolehubah Nyata Keadaan Global Aplikasi
     let currentTab = 'url';
     let qrCode = null;
     let customLogoUrl = null;
-    let selectedPresetLogo = 'none'; // 'none', 'h3'
+    let selectedPresetLogo = 'none';
     let qrHistory = [];
 
-    // Monogram SVG Emas H3 Studio disandikan dalam Data URI
     const h3StudioMonogramSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="45" fill="%232e190d" stroke="%23cfa240" stroke-width="4"/><path d="M35 30 L35 70 M65 30 L65 70 M35 50 L65 50" stroke="%23cfa240" stroke-width="8" stroke-linecap="round"/><path d="M42 35 C 50 35, 50 45, 50 50 C 50 55, 50 65, 58 65" fill="none" stroke="%23cfa240" stroke-width="5" stroke-linecap="round"/></svg>`;
 
-    // Peristiwa permulaan apabila tetingkap DOM bersedia
     window.addEventListener('DOMContentLoaded', () => {
       setupInputListeners();
       initQRCodeStyling();
       renderQR();
     });
 
-    // Pemasangan Tetapan QRCodeStyling Core
     function initQRCodeStyling() {
       qrCode = new QRCodeStyling({
         width: 300,
         height: 300,
-        type: "canvas", // Ditukar dari "svg" ke "canvas" agar tangkapan imej mentah disokong untuk perkongsian file
+        type: "canvas",
         dotsOptions: {
           color: "#2e190d",
           type: "square"
@@ -551,14 +516,13 @@
           imageSizeFactor: 0.15
         },
         qrOptions: {
-          errorCorrectionLevel: "H" // Aras tinggi bagi perlindungan struktur data apabila ditindan logo
+          errorCorrectionLevel: "H"
         }
       });
       
       qrCode.append(document.getElementById("qrcode-canvas"));
     }
 
-    // Mendengar perubahan pada ruangan input
     function setupInputListeners() {
       const inputs = [
         'input-url', 'input-text', 'wifi-ssid', 'wifi-pass', 'wifi-type',
@@ -579,7 +543,6 @@
       });
     }
 
-    // Fungsi lengah (debounce) untuk meringankan operasi render semula
     let debounceTimer;
     function debounce(func, delay) {
       return function() {
@@ -590,7 +553,6 @@
       };
     }
 
-    // Mengambil rentetan data muktamad berasaskan pilihan tab semasa
     function getQRData() {
       switch (currentTab) {
         case 'url':
@@ -608,14 +570,14 @@
           return `WIFI:S:${ssid};T:${type};P:${pass};;`;
           
         case 'contact':
-          const name = document.getElementById('contact-name').value.trim() || 'Rian';
+          const name = document.getElementById('contact-name').value.trim() || 'John Doe';
           const phone = document.getElementById('contact-phone').value.trim();
           const email = document.getElementById('contact-email').value.trim();
           const org = document.getElementById('contact-org').value.trim();
           return `BEGIN:VCARD\nVERSION:3.0\nN:${name};;;\nFN:${name}\nTEL;TYPE=CELL:${phone}\nEMAIL:${email}\nORG:${org}\nEND:VCARD`;
           
         case 'wa':
-          const waPhone = document.getElementById('wa-phone').value.trim() || '62812345678';
+          const waPhone = document.getElementById('wa-phone').value.trim() || '60123456789';
           const waMsg = encodeURIComponent(document.getElementById('wa-msg').value.trim());
           return `https://wa.me/${waPhone}?text=${waMsg}`;
           
@@ -624,7 +586,6 @@
       }
     }
 
-    // Penjanaan Kod QR Nyata secara Realtime
     function renderQR() {
       if (!qrCode) return;
 
@@ -667,7 +628,6 @@
       });
     }
 
-    // Menukar antara tab input kategori data
     function switchTab(tabId) {
       currentTab = tabId;
       
@@ -689,7 +649,6 @@
       renderQR();
     }
 
-    // Mengharmonikan kotak kod warna Hex dan pilihan palet warna
     function syncColorInput(type) {
       if (type === 'fg') {
         const hex = document.getElementById('qr-color-fg-hex').value;
@@ -713,7 +672,6 @@
       document.getElementById('qr-color-bg-hex').value = e.target.value.toUpperCase();
     });
 
-    // Melaksanakan skema warna preset secara terus
     function applyPreset(fg, bg) {
       document.getElementById('qr-color-fg').value = fg;
       document.getElementById('qr-color-fg-hex').value = fg.toUpperCase();
@@ -723,7 +681,6 @@
       showToast("Color preset applied successfully!", "success");
     }
 
-    // Kawalan kemasukan logo tengah
     function setLogoPreset(type) {
       selectedPresetLogo = type;
       
@@ -781,10 +738,9 @@
       selectedPresetLogo = 'none';
       document.getElementById('logo-file-input').value = "";
       setLogoPreset('none');
-      showToast("Logo removed successfully", "info");
+      showToast("Logo removed.", "info");
     }
 
-    // Membuka atau menyembunyikan kata laluan WiFi
     function togglePassVisibility(id) {
       const input = document.getElementById(id);
       const icon = document.getElementById(`${id}-icon`);
@@ -803,93 +759,238 @@
       document.getElementById('res-val').innerText = `${val} x ${val} px`;
     }
 
-    // Melancarkan tindakan muat turun file imej kod QR
-    function downloadQR(extension) {
-      const resolution = parseInt(document.getElementById('dl-resolution').value);
-      const dataText = getQRData();
-      
-      const downloadQRInstance = new QRCodeStyling({
-        ...qrCode._options,
-        width: resolution,
-        height: resolution
-      });
+    function createExportCanvas(resolution) {
+      return new Promise((resolve) => {
+        const qrName = document.getElementById('qr-name-input').value.trim() || 'H3 Studio QR';
+        const fgColor = document.getElementById('qr-color-fg').value;
+        const bgColor = document.getElementById('qr-color-bg').value;
+        const dotStyle = document.getElementById('qr-dot-style').value;
+        const eyeStyle = document.getElementById('qr-eye-style').value;
+        const logoScale = parseFloat(document.getElementById('logo-size-range').value);
+        const rawData = getQRData();
+        const goldColor = '#cfa240';
 
-      let fileName = `H3_Studio_QR_${currentTab}_${Date.now()}`;
-      
-      downloadQRInstance.download({
-        name: fileName,
-        extension: extension
-      }).then(() => {
-        showToast("QR Code image downloaded successfully!", "success");
-        addToHistory(currentTab, dataText);
-      }).catch(err => {
-        showToast("Failed to download QR, please try again.", "error");
+        const tempDiv = document.createElement('div');
+        tempDiv.style.display = 'none';
+        document.body.appendChild(tempDiv);
+
+        const qrSize = Math.floor(resolution * 0.72);
+
+        let activeLogo = null;
+        if (selectedPresetLogo === 'h3') {
+          activeLogo = h3StudioMonogramSvg;
+        } else if (selectedPresetLogo === 'custom' && customLogoUrl) {
+          activeLogo = customLogoUrl;
+        }
+
+        const qrInstance = new QRCodeStyling({
+          width: qrSize,
+          height: qrSize,
+          type: "canvas",
+          data: rawData,
+          dotsOptions: {
+            color: fgColor,
+            type: dotStyle
+          },
+          backgroundOptions: {
+            color: bgColor
+          },
+          cornersSquareOptions: {
+            type: eyeStyle,
+            color: fgColor
+          },
+          cornersDotOptions: {
+            type: eyeStyle === 'square' ? 'square' : 'dot',
+            color: fgColor
+          },
+          image: activeLogo,
+          imageOptions: {
+            imageSizeFactor: logoScale,
+            hideBackgroundDots: true
+          },
+          qrOptions: {
+            errorCorrectionLevel: "H"
+          }
+        });
+
+        qrInstance.append(tempDiv);
+
+        setTimeout(() => {
+          const innerCanvas = tempDiv.querySelector('canvas');
+          if (!innerCanvas) {
+            document.body.removeChild(tempDiv);
+            resolve(null);
+            return;
+          }
+
+          const exportCanvas = document.createElement('canvas');
+          exportCanvas.width = resolution;
+          exportCanvas.height = resolution;
+          const ctx = exportCanvas.getContext('2d');
+
+          ctx.fillStyle = bgColor;
+          ctx.fillRect(0, 0, resolution, resolution);
+
+          const qrX = (resolution - qrSize) / 2;
+          const qrY = (resolution - qrSize) / 2 - (resolution * 0.03);
+          ctx.drawImage(innerCanvas, qrX, qrY);
+
+          const margin = resolution * 0.04;
+          const borderX = margin;
+          const borderY = margin;
+          const borderWidth = resolution - (margin * 2);
+          const borderHeight = resolution - (margin * 2);
+
+          ctx.strokeStyle = fgColor;
+          ctx.lineWidth = Math.max(2, resolution * 0.005);
+          ctx.strokeRect(borderX, borderY, borderWidth, borderHeight);
+
+          ctx.strokeStyle = goldColor;
+          ctx.lineWidth = Math.max(1, resolution * 0.002);
+          const innerOffset = resolution * 0.012;
+          ctx.strokeRect(
+            borderX + innerOffset,
+            borderY + innerOffset,
+            borderWidth - (innerOffset * 2),
+            borderHeight - (innerOffset * 2)
+          );
+
+          const cornerLen = resolution * 0.05;
+          ctx.strokeStyle = goldColor;
+          ctx.lineWidth = Math.max(2, resolution * 0.004);
+
+          ctx.beginPath();
+          ctx.moveTo(borderX + innerOffset, borderY + innerOffset + cornerLen);
+          ctx.lineTo(borderX + innerOffset, borderY + innerOffset);
+          ctx.lineTo(borderX + innerOffset + cornerLen, borderY + innerOffset);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(borderX + borderWidth - innerOffset - cornerLen, borderY + innerOffset);
+          ctx.lineTo(borderX + borderWidth - innerOffset, borderY + innerOffset);
+          ctx.lineTo(borderX + borderWidth - innerOffset, borderY + innerOffset + cornerLen);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(borderX + innerOffset, borderY + borderHeight - innerOffset - cornerLen);
+          ctx.lineTo(borderX + innerOffset, borderY + borderHeight - innerOffset);
+          ctx.lineTo(borderX + innerOffset + cornerLen, borderY + borderHeight - innerOffset);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(borderX + borderWidth - innerOffset - cornerLen, borderY + borderHeight - innerOffset);
+          ctx.lineTo(borderX + borderWidth - innerOffset, borderY + borderHeight - innerOffset);
+          ctx.lineTo(borderX + borderWidth - innerOffset, borderY + borderHeight - innerOffset - cornerLen);
+          ctx.stroke();
+
+          ctx.fillStyle = fgColor;
+          const fontSize = Math.floor(resolution * 0.045);
+          ctx.font = `bold ${fontSize}px "Playfair Display", Georgia, serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(qrName, resolution / 2, resolution - margin - (resolution * 0.05));
+
+          document.body.removeChild(tempDiv);
+          resolve(exportCanvas);
+        }, 150);
       });
     }
 
-    // FUNGSI UTAMA KONGSI QR (Menghantar Gambar Imej Sebenar, Bukan URL!)
-    async function shareQR() {
+    async function downloadQR(extension) {
+      const resolution = parseInt(document.getElementById('dl-resolution').value);
       const dataText = getQRData();
       
-      // Ambil elemen kanvas live yang tertera pada kotak preview
-      const canvas = document.querySelector('#qrcode-canvas canvas');
-      if (!canvas) {
-        // Jika kanvas tiada, cuba ambil data SVG atau beralih ke sandaran teks biasa
+      if (extension === 'png') {
+        const exportCanvas = await createExportCanvas(resolution);
+        if (!exportCanvas) {
+          showToast("Failed to generate bordered QR Code", "error");
+          return;
+        }
+
+        const dataUrl = exportCanvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = `H3_Studio_QR_${currentTab}_${Date.now()}.png`;
+        link.href = dataUrl;
+        link.click();
+
+        showToast("QR Code image downloaded successfully!", "success");
+        addToHistory(currentTab, dataText);
+      } else {
+        const downloadQRInstance = new QRCodeStyling({
+          ...qrCode._options,
+          width: resolution,
+          height: resolution
+        });
+
+        let fileName = `H3_Studio_QR_${currentTab}_${Date.now()}`;
+        
+        downloadQRInstance.download({
+          name: fileName,
+          extension: extension
+        }).then(() => {
+          showToast("SVG file downloaded successfully!", "success");
+          addToHistory(currentTab, dataText);
+        }).catch(err => {
+          showToast("Failed to download SVG, please try again.", "error");
+        });
+      }
+    }
+
+    async function shareQR() {
+      const dataText = getQRData();
+      const resolution = 1000;
+      
+      const exportCanvas = await createExportCanvas(resolution);
+      if (!exportCanvas) {
         shareTextFallback();
         return;
       }
 
       try {
-        // Tukar renderan piksel kanvas kepada fail format imej Blob PNG
-        canvas.toBlob(async (blob) => {
+        exportCanvas.toBlob(async (blob) => {
           if (!blob) {
             shareTextFallback();
             return;
           }
           
-          // Membina struktur fail imej PNG berserta tajuk deskriptif
           const file = new File([blob], 'H3_Studio_QR.png', { type: 'image/png' });
           
-          // Semak keserasian sistem web perkongsian fail native (contohnya di iOS/Android/macOS)
           if (navigator.canShare && navigator.canShare({ files: [file] })) {
             await navigator.share({
               files: [file],
               title: 'H3 Studio Premium QR Code',
-              text: 'Check out this premium generated QR Code!',
+              text: 'Scan this premium H3 Studio QR Code!',
             });
-            showToast("QR Code image shared successfully!", "success");
+            showToast("QR Code shared successfully!", "success");
             addToHistory(currentTab, dataText);
           } else {
-            // Sandaran alternatif sekiranya browser menyekat penghantaran fail imej secara terus
             shareTextFallback();
           }
         }, 'image/png');
       } catch (err) {
-        console.error("Kesilapan perkongsian fail imej secara native:", err);
+        console.error("Native sharing error:", err);
         shareTextFallback();
       }
     }
 
-    // Kaedah sandaran kongsi teks/tautan maklumat
     function shareTextFallback() {
       const qrData = getQRData();
       if (navigator.share) {
         navigator.share({
           title: 'H3 Studio QR Content',
-          text: 'Shared content from H3 Studio QR Code:',
+          text: 'Shared from H3 Studio QR Code:',
           url: qrData.startsWith('http') ? qrData : undefined
         }).then(() => {
-          showToast("QR content shared successfully!", "success");
+          showToast("Content shared successfully!", "success");
         }).catch(err => {
           console.log("Sharing cancelled or blocked:", err);
         });
       } else {
         copyToClipboard();
-        showToast("Share API unsupported. Copied QR content to clipboard!", "info");
+        showToast("Sharing not supported. Copied to clipboard!", "info");
       }
     }
 
-    // Fungsi salin kandungan ke papan klip
     function copyToClipboard() {
       const textToCopy = getQRData();
       const dummyInput = document.createElement("input");
@@ -900,18 +1001,17 @@
       try {
         const successful = document.execCommand('copy');
         if (successful) {
-          showToast("QR content copied to clipboard!", "success");
+          showToast("Content copied to clipboard!", "success");
         } else {
           showToast("Failed to copy, please copy manually.", "error");
         }
       } catch (err) {
-        showToast("Clipboard access restricted.", "error");
+        showToast("Clipboard access denied.", "error");
       }
       
       document.body.removeChild(dummyInput);
     }
 
-    // Memaparkan Notifikasi Toast Maklum Balas
     function showToast(message, type = 'success') {
       const toast = document.getElementById('toast-notif');
       const msgText = document.getElementById('toast-message');
@@ -937,7 +1037,6 @@
       }, 3000);
     }
 
-    // Menguruskan penambahan barisan log riwayat penjanaan
     function addToHistory(type, data) {
       const noHistoryMsg = document.getElementById('no-history-msg');
       if (noHistoryMsg) {
@@ -976,7 +1075,7 @@
         container.innerHTML = `
           <div id="no-history-msg" class="col-span-full text-center py-6 text-sogan-500 text-sm">
             <i class="fa-solid fa-folder-open text-3xl text-sogan-300 mb-2 block"></i>
-            No QR Code history in this session yet.
+            No QR generation history in this session yet.
           </div>
         `;
         return;
@@ -997,7 +1096,7 @@
             <div class="text-right">
               <span class="text-[9px] text-sogan-500 block mb-1">${item.time}</span>
               <button onclick="restoreHistoryItem(${item.id})" class="text-[10px] bg-sogan-gold/10 hover:bg-sogan-gold/20 text-sogan-800 border border-sogan-gold/30 px-2.5 py-1 rounded-md font-semibold transition-all">
-                Use Again
+                Reuse
               </button>
             </div>
           </div>
@@ -1006,7 +1105,6 @@
       });
     }
 
-    // Melakukan isian semula borang input daripada item log riwayat lama
     function restoreHistoryItem(id) {
       const item = qrHistory.find(i => i.id === id);
       if (!item) return;
@@ -1044,13 +1142,13 @@
       }
 
       renderQR();
-      showToast("History data restored!", "info");
+      showToast("History data restored successfully!", "info");
     }
 
     function clearHistory() {
       qrHistory = [];
       renderHistoryList();
-      showToast("Session history cleared", "info");
+      showToast("Session history log cleared", "info");
     }
   </script>
 </body>
